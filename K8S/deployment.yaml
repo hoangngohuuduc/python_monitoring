@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet-app-deployment
+  name: python-system-monitoring
 spec:
   replicas: 1 # Set the desired number of replicas
   selector:
     matchLabels:
-      app: dotnet-app
+      app: python-system-monitoring
   template:
     metadata:
       labels:
-        app: dotnet-app
+        app: python-system-monitoring
     spec:
       containers:
         - name: dotnet-app
-          image: duchoang26/dotnet-monitoring:latest # Replace with your Docker image name
+          image: duchoang26/python-system-monitoring:latest # Replace with your Docker image name
           ports:
             - containerPort: 5000 # Expose the port specified in your Dockerfile
 
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnet-app-service
+  name: python-system
 spec:
   selector:
-    app: dotnet-app
+    app: python-system-monitoring
   ports:
     - protocol: TCP
       port: 80 # Service port
